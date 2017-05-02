@@ -1,0 +1,9 @@
+<h1><%= @chord[:title] %></h1>
+<% if !@tags.empty? %>
+<% @tags.each do |tag| %>
+  <a href="<%= tag_path(tag[:id]) %>"><span class="badge"><%= tag[:title] %></span></a>
+<% end %>
+<% end %>
+<p>
+  <%= @chord[:content]%>
+</p>

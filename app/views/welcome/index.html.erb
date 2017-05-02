@@ -1,2 +1,5 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<h1>Last Updates</h1>
+<% list = Chord.limit(10) %>
+<% list.each do |c| %>
+  <p><a href="<%= chord_path(c[:id]) %>"><%= c[:title] %></a></p>
+<% end %>
