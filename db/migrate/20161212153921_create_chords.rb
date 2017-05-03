@@ -3,7 +3,7 @@ class CreateChords < ActiveRecord::Migration[5.0]
     create_table :chords do |t|
       t.string :title
       t.text :content
-      t.integer :views
+      t.integer :views, :default => 0
     end
   end
 end
