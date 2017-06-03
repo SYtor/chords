@@ -12,5 +12,8 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
   
+  
+  post '/add_comment' => 'chords#add_comment'
+  
   root 'welcome#index'
 end

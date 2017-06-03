@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 6) do
+ActiveRecord::Schema.define(version: 5) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,20 +30,13 @@ ActiveRecord::Schema.define(version: 6) do
     t.index ["user_id"], name: "index_chords_on_user_id", using: :btree
   end
 
-  create_table "comment_groups", force: :cascade do |t|
-    t.integer  "chord_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["chord_id"], name: "index_comment_groups_on_chord_id", using: :btree
-  end
-
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "comment_group_id"
+    t.integer  "chord_id"
     t.text     "content"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.index ["comment_group_id"], name: "index_comments_on_comment_group_id", using: :btree
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chord_id"], name: "index_comments_on_chord_id", using: :btree
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
@@ -62,7 +55,6 @@ ActiveRecord::Schema.define(version: 6) do
   add_foreign_key "chord_to_tags", "chords"
   add_foreign_key "chord_to_tags", "tags"
   add_foreign_key "chords", "users"
-  add_foreign_key "comment_groups", "chords"
-  add_foreign_key "comments", "comment_groups"
+  add_foreign_key "comments", "chords"
   add_foreign_key "comments", "users"
 end

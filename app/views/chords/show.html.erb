@@ -7,3 +7,27 @@
 <p>
   <%= @chord[:content]%>
 </p>
+<p>
+  Created by: <%= @chord.user.name%>
+</p>
+
+
+
+<% if !@comments.empty? %>
+  Comments:
+  <% @comments.each do |comment| %>
+    <p>
+      <a><%= comment.user.name %></a>
+      <span><%= comment.content %></span>
+    </p>
+  <% end %>
+<% else %>
+  No comments yet
+<% end %>
+
+<%= form_tag '/add_comment' do %>
+  <%= hidden_field_tag :chord_id, @chord.id %>
+  Message: <%= text_field_tag :message %>
+  <%= submit_tag "Submit" %>
+
+<% end %>
