@@ -1,0 +1,4 @@
+<p>Last added chords:</p>
+<% @list.each do |i| %>
+  <p><a href="<%= chord_path(i.id) %>"><%= i.title %></a></p>
+<% end %>

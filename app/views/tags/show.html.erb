@@ -1,6 +1,0 @@
-<h1><%= @tag[:title]%></h1>
-<% if !@chords.empty? %>
-<% @chords.each do |chord|%>
-<a href="<%= chord_path(chord[:id]) %>"><p><%= chord[:title] %></p>
-<% end %>
-<% end %>

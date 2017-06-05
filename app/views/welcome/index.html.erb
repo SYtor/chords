@@ -1,5 +1,16 @@
 <h1>Last Updates</h1>
-<% list = Chord.limit(10) %>
-<% list.each do |c| %>
-  <p><a href="<%= chord_path(c[:id]) %>"><%= c[:title] %></a></p>
+<% @list.each do |i| %>
+  <p>
+    <% u = i.user %>
+    <a href="user_path(i.id)">
+      <%= u.name %>
+    </a>
+    
+    <%= i.updated_at==i.created_at ? "created" : "updated" %>
+    <%= i.author==0 ? "artist" : "chord" %>
+    
+    <a href="<%= i.author==0 ? artist_path(i.id) : chord_path(i.id) %>">
+      <%= i.title %>
+    </a>
+  </p>
 <% end %>

@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
   get 'welcome/index'
-  resources :chords, :tags
-  namespace :api do
-    resources :chords, :tags
-  end
+  resources :chords, :artists
   
   get '/login' => 'session#new'
   post '/login' => 'session#create'
@@ -12,7 +9,7 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
   
-  get '/search' => 'tags#search'  
+  get '/search' => 'chords#search'
   
   post '/add_comment' => 'chords#add_comment'
   

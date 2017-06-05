@@ -1,11 +1,20 @@
-<h1><%= @chord[:title] %></h1>
+<h1><%= @artist[:title] %></h1>
 <p>
-  <%= @chord[:content]%>
+  <%= @artist[:content]%>
 </p>
 <p>
-  <% u = @chord.user%>
+  <% u = @artist.user%>
   Created by: <a href="user_path(u.id)"><%= u.name%></a>
 </p>
+
+<% if @chords.empty? %>
+  <p>No chords yet</p>
+<% else %>
+  <p>Avaliable chords:</p>
+  <% @chords.each do |c| %>
+    <p><a href="<%= chord_path(c.id) %>"><%= c.title %></a></p>
+  <% end %>
+<% end %>
 
 <% if !@comments.empty? %>
   Comments:
@@ -22,7 +31,7 @@
 <% if current_user %>
 
   <%= form_tag '/add_comment' do %>
-    <%= hidden_field_tag :chord_id, @chord.id %>
+    <%= hidden_field_tag :chord_id, @artist.id %>
     Message: <%= text_field_tag :message %>
     <%= submit_tag "Submit" %>
   <% end %>
