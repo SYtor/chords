@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
   
+  get '/search' => 'tags#search'  
   
   post '/add_comment' => 'chords#add_comment'
   
