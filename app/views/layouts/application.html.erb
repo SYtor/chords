@@ -30,29 +30,31 @@
             <li><a href=""><%= current_user.name %></a></li>
             <li><a href="<%= logout_path %>">Logout</a></li>
           <% else %>          
-            <li><a href="<%= signup_path %>"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            <li><a href="<%= login_path %>"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li><a href="<%= signup_path %>">Sign Up</a></li>
+            <li><a href="<%= login_path %>">Login</a></li>
           <% end %>
         </ul>
       </div>
     </nav>
     
-    <div class="container">
-      <div class="row">
-        <div class="col-md-10">          
-          <%= yield %>
-        </div>
-        <div class="col-md-2">
           <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-          <!-- chords_site -->
+          <!-- chords_main_page -->
           <ins class="adsbygoogle"
                style="display:block"
                data-ad-client="ca-pub-8682325707453358"
-               data-ad-slot="7556132428"
-               data-ad-format="auto"></ins>
+               data-ad-slot="1880284821"
+               data-ad-format="link"></ins>
           <script>
           (adsbygoogle = window.adsbygoogle || []).push({});
           </script>
+        
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10">          
+          <%= yield %>          
+        </div>
+        <div class="col-md-2">
+
         </div>
       </div>
     </div>

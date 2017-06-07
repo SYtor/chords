@@ -7,6 +7,10 @@
   Created by: <a href="user_path(u.id)"><%= u.name%></a>
 </p>
 
+<p>
+  <a href="<%= new_chord_path + "?id=" + @artist.id.to_s %>">Add new chord</a>
+</p>
+
 <% if @chords.empty? %>
   <p>No chords yet</p>
 <% else %>

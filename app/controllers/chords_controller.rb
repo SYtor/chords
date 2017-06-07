@@ -11,18 +11,21 @@ class ChordsController < ApplicationController
   end
   
   def new
+    @artist = Chord.find(params[:id])
   end
   
   def create
     @c = Chord.new(params.require(:chord).permit(:title, :author, :content))
     @c.user_id = current_user.id
+    @c.author = params[:author]
     @c.save
-    redirect_to chords_path(@c.id)
+    render json: params
+    #redirect_to chords_path(@c.id)
   end
   
   def search
     query = params[:search]
-    @list = Chord.find(:all, :conditions=>['title LIKE ?', "%#{query}%"])
+    @list = Chord.where("LOWER(title) ILIKE LOWER(?)",'%'+query+'%')
   end
   
   def add_comment

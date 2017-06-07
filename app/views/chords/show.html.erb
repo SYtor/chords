@@ -1,6 +1,6 @@
 <h1><%= @chord[:title] %></h1>
 <p>
-  <%= @chord[:content]%>
+  <%= simple_format @chord[:content]%>
 </p>
 <p>
   <% u = @chord.user%>

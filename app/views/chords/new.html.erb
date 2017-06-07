@@ -1,13 +1,12 @@
+<h1>Creating new chord for artist <%= @artist.title %></h1>
+
 <%= form_for :chord, url: chords_path do |f| %>
   <p>
     <%= f.label :title %><br>
     <%= f.text_field :title %>
   </p> 
   
-  <p>
-    <%= f.label "author(0 - author)" %><br>
-    <%= f.text_field :author %>
-  </p>
+  <%= hidden_field_tag :author, @artist.id %>
  
   <p>
     <%= f.label :Content %><br>
