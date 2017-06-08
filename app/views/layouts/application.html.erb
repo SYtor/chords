@@ -15,7 +15,7 @@
           <a class="navbar-brand" href="<%= root_path %>">Chords.tk</a>
         </div>
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Home</a></li>
+          <li class="active"><a href="<%= root_path %>">Home</a></li>
           <li><a href="<%= artists_path%>">Artists</a></li>
           <li><a href="<%= chords_path%>">Chords</a></li>
         </ul>
@@ -23,7 +23,7 @@
           <li>
             <%= form_tag search_path, :method => 'get', :class => 'navbar-form' do %>
                 <%= text_field_tag :search, params[:search] %>
-                <%= submit_tag "Search", :name => nil %>
+                <%= submit_tag "Search", :class => 'btn btn-default', :name => nil %>
             <% end %>
           </li>
           <% if current_user %>
