@@ -26,6 +26,8 @@ class ArtistsController < ApplicationController
   def show    
     id = params[:id]
     @artist = Chord.find(id)
+    @artist.views = @artist.views + 1
+    @artist.save
     @chords = Chord.where(author: id).order('updated_at DESC')
     @comments = @artist.comments
   end

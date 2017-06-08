@@ -1,16 +1,30 @@
-<h1>Last Updates</h1>
-<% @list.each do |i| %>
-  <p>
-    <% u = i.user %>
-    <a href="user_path(i.id)">
-      <%= u.name %>
-    </a>
-    
-    <%= i.updated_at==i.created_at ? "created" : "updated" %>
-    <%= i.author==0 ? "artist" : "chord" %>
-    
-    <a href="<%= i.author==0 ? artist_path(i.id) : chord_path(i.id) %>">
-      <%= i.title %>
-    </a>
-  </p>
-<% end %>
+<div class="row">
+  <div class="col-md-6">
+    <h1>Last Updates</h1>
+    <% @updates.each do |i| %>
+      <p>
+        <% u = i.user %>
+        <a href="user_path(i.id)">
+          <%= u.name %>
+        </a>
+        
+        <%= i.updated_at==i.created_at ? "created" : "updated" %>
+        <%= i.author==0 ? "artist" : "chord" %>
+        
+        <a href="<%= i.author==0 ? artist_path(i.id) : chord_path(i.id) %>">
+          <%= i.title %>
+        </a>
+      </p>
+    <% end %>             
+  </div>
+  <div class="col-md-6">    
+    <h1>Most popular</h1>
+    <% @top.each do |i| %>
+      <p>        
+        <a href="<%= i.author==0 ? artist_path(i.id) : chord_path(i.id) %>">
+          <%= i.title %>
+        </a>
+      </p>
+    <% end %> 
+  </div>
+</div>

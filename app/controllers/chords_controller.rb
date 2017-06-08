@@ -7,6 +7,8 @@ class ChordsController < ApplicationController
   def show
     id = params[:id]
     @chord = Chord.find(id)
+    @chord.views = @chord.views + 1
+    @shord.save
     @comments = @chord.comments
   end
   
