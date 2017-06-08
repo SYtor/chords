@@ -1,4 +1,4 @@
-<p><a href="<%= new_artist_path %>">Create new artist</a></p>
+<p><a href="<%= new_artist_path %>"><h1> + Create new artist</h1></a></p>
 <p>Last added artists:</p>
 <% @list.each do |i| %>
   <p><a href="<%= artist_path(i.id) %>"><%= i.title %></a></p>
