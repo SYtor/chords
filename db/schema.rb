@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(version: 3) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
+    t.text     "description"
+    t.integer  "score"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

@@ -1,19 +1,25 @@
-<h1>Creating new chord for artist <%= @artist.title %></h1>
+<h1>Creating new chord for artist: "<%= @artist.title %>"</h1>
 
-<%= form_for :chord, url: chords_path do |f| %>
-  <p>
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </p> 
+<%= form_for :chord, :html => { :class => 'form-horizontal' }, url: chords_path do |f| %>
+  <div class="form-group">
+    <%= f.label :title, :class => 'control-label col-sm-2' %>
+    <div class="col-sm-10">
+      <%= f.text_field :title, :class => 'form-control' %>
+    </div>
+  </div>
   
   <%= hidden_field_tag :author, @artist.id %>
- 
-  <p>
-    <%= f.label :Content %><br>
-    <%= f.text_area :content %>
-  </p>
- 
-  <p>
-    <%= f.submit %>
-  </p>
+  
+  <div class="form-group">
+    <%= f.label :Content, :class => 'control-label col-sm-2' %>
+    <div class="col-sm-10">
+      <%= f.text_area :content, :class => 'form-control' %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit 'Submit', :class=> 'btn btn-default' %>
+    </div>
+  </div>
 <% end %>

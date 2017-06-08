@@ -11,16 +11,22 @@ class ChordsController < ApplicationController
   end
   
   def new
+    if !current_user
+      redirect_to login_path
+    end
     @artist = Chord.find(params[:id])
   end
   
   def create
+    if !current_user
+      redirect_to login_path
+      return
+    end
     @c = Chord.new(params.require(:chord).permit(:title, :author, :content))
     @c.user_id = current_user.id
     @c.author = params[:author]
     @c.save
-    render json: params
-    #redirect_to chords_path(@c.id)
+    redirect_to chord_path(@c.id)
   end
   
   def search
@@ -35,7 +41,11 @@ class ChordsController < ApplicationController
       m.chord_id = params[:chord_id]
       m.content = params[:message]
       m.save
-      redirect_to chord_path(m.chord_id)
+      if Chord.find(params[:chord_id]).author == 0        
+        redirect_to artist_path(m.chord_id)
+      else
+        redirect_to chords_path(m.chord_id)
+      end
     else
       redirect_to login_path
     end

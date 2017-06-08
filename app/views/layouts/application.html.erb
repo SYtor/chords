@@ -3,6 +3,17 @@
   <head>
     <title>Chords</title>
     <%= csrf_meta_tags %>
+    
+    <%= yield :head %>
+
+    <style>
+      html {
+        height: 100%;
+      }
+      body {
+        min-height: 100%;
+      }
+    </style>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
