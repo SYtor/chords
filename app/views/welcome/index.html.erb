@@ -8,8 +8,8 @@
           <%= u.name %>
         </a>
         
-        <%= i.updated_at==i.created_at ? "created" : "updated" %>
-        <%= i.author==0 ? "artist" : "chord" %>
+        added
+        <%= i.author==0 ? "artist" : "chords" %>
         
         <a href="<%= i.author==0 ? artist_path(i.id) : chord_path(i.id) %>">
           <%= i.title %>
